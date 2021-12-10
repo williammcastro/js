@@ -1,4 +1,7 @@
-import { obtenerUsuarios } from './js/http-provider';
+import { init } from './usuarios-page';
 
 
-obtenerUsuarios().then((loqsea) => { return console.log(  loqsea ) } );
+//obtenerUsuarios().then((loqsea) => { return console.log(  loqsea ) } );
+
+init();
+

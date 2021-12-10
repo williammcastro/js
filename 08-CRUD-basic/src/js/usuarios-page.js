@@ -1,16 +1,12 @@
-import { obtenerUsuarios } from "./js/http-provider";
 
 
 
 const body  = document.body;
-let tbody;
-let correlativo = 0;
 
 const crearHtml = () => {
     
     const html = `
     <h1 class="mt-5"> Usuarios</h1>
-    <hr>
 
     <table class="table">
         <thead>
@@ -22,7 +18,6 @@ const crearHtml = () => {
             </tr>
         </thead>
         <tbody>
-            
         </tbody>
     </table>
     `;
@@ -31,13 +26,10 @@ const crearHtml = () => {
     div.innerHTML = html;
     body.appendChild( div );
 
-
     // Crear una referencia al TBODY
     // ya que los TRs van dentro del tbody
             // querySelector('tbody');
             // Crear una variable para mantener la referencia?
-
-    tbody = document.querySelector('tbody');
 
 }
 
@@ -55,49 +47,31 @@ const crearFilaUsuario = ( usuario ) => {
 
     // En la tabla deben de colocar un correlativo empezando en 1
     // También deben de colocar el avatar
-    correlativo++;
 
     const html = `
-        <td scope="col"> ${ correlativo }. </td>
-        <td scope="col"> ${ usuario.email } </td>
-        <td scope="col"> ${ usuario.first_name } ${ usuario.last_name } </td>
+        <td scope="col"> 1. </td>
+        <td scope="col"> michael.lawson@reqres.in </td>
+        <td scope="col"> Michael Lawson </td>
         <td scope="col">
-            <img class="img-thumbnail" src="${ usuario.avatar }">
+            <img class="img-thumbnail" src="">
         </td>
     `;
 
-    
-
-
     const tr = document.createElement('tr');
     tr.innerHTML = html;
-    tbody.appendChild( tr );
 
     // Añadir el table row (tr) dentro del TBody creado anteriormente
 
 }
 
 
-
-
-
-
 export const init = async() => {
 
     crearHtml();
 
-    correlativo = 0;
-
     // Obtener la lista de usuarios usando el servicio creado
     // Por cada usuario, llamar la función crearFila (for, forEach)
     // Colocar el init en el index.js, para que se ejecute la creación
-
-    // //Opcion 1: donde se entiende mas
-    // const usuarios = await obtenerUsuarios();
-    // usuarios.forEach( crearFilaUsuario );
-
-    // // Opcion 2: resumida
-    ( await obtenerUsuarios() ).forEach( crearFilaUsuario );
 
 }
 
