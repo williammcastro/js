@@ -52,9 +52,21 @@ const borrarUsuario = async( id ) => {
     return ( resp.ok ) ? 'Borrado' : 'No se pudo eliminar';
 }
 
+
+// Obtener todos los usuarios
+const obtenerUsuarios = async () => {
+    const resp = await fetch( urlCRUD );
+    const { data:usuarios } = await resp.json();
+    //console.log(data);
+    return usuarios;
+}
+
 export {
     getUsuario,
     crearUsuario,
     actualizarUsuario,
+    obtenerUsuarios,
     borrarUsuario
 }
+
+
